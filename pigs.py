@@ -78,3 +78,21 @@ def squareRootBi(x, epsilon):
     return guess
 
 print(squareRootBi(15, 0.0001))
+
+# Sqare root using Newton Raphson Method
+
+def squareRootNR(x, epsilon):
+    assert x >= 0, 'X must be a non-negitive, non' + str(x)
+    assert epsilon > 0, 'Epsilon must be a postive, non' + str(epsilon)
+    x = float(x)
+    guess = x / 2.0
+    guess = 0.001
+    diff = guess**2 - x
+    ctr = 1
+    while abs(diff) > epsilon and ctr <= 100:
+        guess = guess - diff / (2.0 * guess)
+        diff = guess**2 - x
+        ctr += 1
+    assert ctr <= 100, 'Iteration exceeded 100'
+    print 'Bi method. Num. iterations: ', ctr, 'Estimate', guess
+    return guess
