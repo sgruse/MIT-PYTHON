@@ -7,12 +7,17 @@ function partition(arr, low, high) {
   var pivotVal = arr[pivotIdx];
   var i = low;
   var j = high;
+  console.log('Pivot Value is : ', pivotVal);
+  console.log('Array is : ', arr);
 
   while (i <= j) {
     while (arr[i] < pivotVal) {
+      console.log('i count');
       i++;
     }
     while (arr[j] > pivotVal) {
+      console.log('js is : ', j);
+      console.log('j count');
       j--;
     }
     if (i <= j) {
