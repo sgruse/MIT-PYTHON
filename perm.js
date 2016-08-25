@@ -55,3 +55,67 @@ for (var i = 0; i < result.length; i++) {
     result[i] = result[i].join('');
 }
 console.log(result);
+
+
+//  GET MIN INDEX
+
+function getMinIndex (arr) {
+  var minIndex = 0;
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] < arr[minIndex]) {
+      minIndex = i;
+    }
+  }
+  return minIndex;
+}
+
+// IS PERMUTATION :: IF WHITE SPACE DOESN'T MATTER
+
+
+function isPerm (string1, string2) {
+  var wrong = 'Not a permuatation';
+  var x1 = string1.toLowerCase().replace(/\W/g, '').split('').sort('');
+  var x2 = string2.toLowerCase().replace(/\W/g, '').split('').sort('');
+  if (x1.length !== x2.length) return wrong;
+
+  for (var i = 0; i < x1.length; i++) {
+    if (x1[i] !== x2[i]) return wrong;
+  }
+  return true;
+}
+
+// REPLACE WHITE SPACE WITH %20
+
+function replay (string) {
+  var replaceWith = '%20';
+  var output = '';
+  for (var i = 0; i < string.length; i++) {
+    if (string[i] == ' ') {
+      output += replaceWith;
+      while (string[i] == ' ') {
+        i++
+      }
+    }
+    output += string[i];
+  }
+  return output;
+}
+
+// CHECKING ARRAY'S OF EQUAL LENGTH FOR THE SAME INPUTS
+
+function check (arr1, arr2) {
+  var j = 0;
+  for (var i = 0; i < arr1.length; i++) {
+    j = 0;
+    while (j < arr1.length + 1) {
+     if (arr2[j] == arr1[i]) {
+       break;
+     }
+     if (arr2[j] !== arr1[i]) {
+       j++
+     }
+     if (j == arr1.length + 1) return false
+  }
+}
+  return true;
+}
