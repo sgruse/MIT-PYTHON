@@ -1,3 +1,4 @@
+//SINGLY LINKED LIST:
 
 function Node (data) {
   this.data = data;
@@ -10,7 +11,7 @@ function SinglyList () {
 }
 
 SinglyList.prototype.add = function (value) {
-  var node = new Node (value);
+  var node = new Node(value);
   var currentNode = this.head;
 
 // IF THERE IS NO HEAD NODE
@@ -63,7 +64,7 @@ SinglyList.prototype.remove = function(position) {
   var deleteNode = null;
 
 // INVALIDE POSITION
-  if (position < length || position > length) {
+  if (position < 0 || position > length) {
     throw new Error(message.failure);
   }
 
@@ -84,6 +85,7 @@ SinglyList.prototype.remove = function(position) {
   }
 
   beforeNodeToDelete.next = nodeToDelete.next;
+  // THIS IS SET SO THAT WE CAN RETURN THE DELETED NODE
   deleteNode = nodeToDelete;
   nodeToDelete = null;
   this._length --;
@@ -91,14 +93,44 @@ SinglyList.prototype.remove = function(position) {
   return deleteNode;
 }
 
+SinglyList.prototype.removeDoup = function() {
+  var prev = this.head;
+  var current = prev.next;
+  var hash = {};
+  while (current != null) {
+    if (!hash[current.data]) {
+      hash[current.data] = true;
+    }
+    else {
+      prev.next =  current.next
+      this._length --;
+    }
+    console.log('HASH IS : ', hash);
+    prev = current;
+    current = current.next;
+  }
+
+}
 
 var x = new SinglyList();
 
 x.add('sam');
 x.add('bobby');
+x.add('bobby');
+// x.add('zak');
+// x.add('zak');
+x.add('zak');
+x.add('zak');
+x.add('zak');
+x.add('sam');
+x.add({sam: 27, jerad: 27});
 
-console.log("NODE AT POSITION IS : ", x.searchNodeAt(2));
-
-console.log('DELETE NODE AT POSITION : ', x.remove(2));
+// console.log("NODE AT POSITION IS : ", x.searchNodeAt(2));
+x.removeDoup();
+// console.log('DELETE NODE AT POSITION : ', x.remove(2));
 
 console.log(x);
+
+
+
+// DOUBLYE LINKED LIST :
