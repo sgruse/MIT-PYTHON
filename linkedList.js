@@ -105,11 +105,32 @@ SinglyList.prototype.removeDoup = function() {
       prev.next =  current.next
       this._length --;
     }
-    console.log('HASH IS : ', hash);
     prev = current;
     current = current.next;
   }
+}
 
+// CONCEPTUAL = MOVE CURRENT nTH steps then increment both pointers until current is at end. then reutrn the following node.
+//        ^
+// [1, 3, 5, 6, 7]
+// ^
+// p1
+// ^
+// p2
+
+SinglyList.prototype.kthLast = function (n) {
+  var current = this.head;
+  var follower = this.head;
+
+  for (var i = 0; i < n; i++) {
+    if (current == null) return null;
+    current = current.next;
+  }
+    while (current.next !== null) {
+      current = current.next;
+      follower = follower.next;
+    }
+    return follower;
 }
 
 var x = new SinglyList();
@@ -121,15 +142,12 @@ x.add('bobby');
 // x.add('zak');
 x.add('zak');
 x.add('zak');
-x.add('zak');
+x.add('jackson');
 x.add('sam');
 x.add({sam: 27, jerad: 27});
+console.log(x.kthLast(2));
+// console.log(x);
 
-// console.log("NODE AT POSITION IS : ", x.searchNodeAt(2));
-x.removeDoup();
-// console.log('DELETE NODE AT POSITION : ', x.remove(2));
-
-console.log(x);
 
 
 
