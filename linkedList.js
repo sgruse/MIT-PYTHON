@@ -138,8 +138,6 @@ var x = new SinglyList();
 x.add('sam');
 x.add('bobby');
 x.add('bobby');
-// x.add('zak');
-// x.add('zak');
 x.add('zak');
 x.add('zak');
 x.add('jackson');
