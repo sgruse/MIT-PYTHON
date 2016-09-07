@@ -22,5 +22,5 @@ function pascalSimple(numTiers) {
   // return triangle;
 }
 
-
+console.log(pascalSimple(7));
 console.log(pascalSimple(6));
